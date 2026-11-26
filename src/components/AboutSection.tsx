@@ -29,12 +29,13 @@ const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
       >
         {lang === "ja" ? (
           <>
-            Webの仕組みとマーケティングの両面から、
+          小原さやかです。
             <br />
-            事業の課題を見つけ、解決をサポートする
+            Webの仕組みと
+            <br />マーケティングの両面から、
             <br />
-            小原さやかです。
-          </>
+            事業の課題を見つけ<br />解決をサポートします。
+            </>
         ) : (
           <>
             Hi, I'm Sayaka Ohara.
