@@ -1,8 +1,13 @@
+
 // src/components/MainSection.tsx
 
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { FaCheckCircle, FaExclamationTriangle, FaArrowDown } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaArrowDown,
+} from "react-icons/fa";
 import "../App.css";
 
 type Language = "ja" | "en";
@@ -11,50 +16,67 @@ interface MainSectionProps {
   lang: Language;
 }
 
-// 課題と解決策を1対1でセットにしたデータ構造
 interface ComparisonPair {
-  problemJa: React.ReactNode;
-  problemEn: React.ReactNode;
-  solutionJa: React.ReactNode;
-  solutionEn: React.ReactNode;
+  problemJa: string;
+  problemEn: string;
+  solutionJa: string;
+  solutionEn: string;
 }
 
 const comparisonData: ComparisonPair[] = [
   {
-    problemJa: "広告を出しているけれど、成果や成果指標が分からない",
-    problemEn: "Running ads, but unsure if they are driving actual ROI or real results",
-    solutionJa: "広告の成果を正しく計測し、どの施策が効果的かを明確に可視化します",
-    solutionEn: "Accurately track ad performance to clearly identify what drives ROI",
+    problemJa: "ホームページを作ったけれど、問い合わせや集客につながらない",
+    problemEn:
+      "You have a website, but it's not generating inquiries or attracting customers.",
+    solutionJa:
+      "サイトの内容や見せ方、サービスの伝わりやすさ、問い合わせまでの流れを確認し、集客につながる改善策を提案します。",
+    solutionEn:
+      "I review your website content, messaging, and customer journey to identify ways to turn visitors into potential customers.",
   },
   {
-    problemJa: "広告費をかけているのに、問い合わせや購入が増えない",
-    problemEn: "Ad spend keeps rising, but conversions and sales remain stagnant",
-    solutionJa: "コンバージョンまでの流れを整理し、ユーザーに届く広告運用へ改善します",
-    solutionEn: "Streamline the user funnel for more effective and targeted ad delivery",
+    problemJa: "広告を出しているのに、思うような成果が出ない",
+    problemEn:
+      "You're running ads, but they're not delivering the results you expected.",
+    solutionJa:
+      "広告だけでなく、広告を見た人が訪れるWebサイトやLPまで確認し、問い合わせにつながらない原因を探ります。",
+    solutionEn:
+      "I look beyond your ads to examine the website and landing pages visitors reach, identifying what's preventing them from taking action.",
   },
   {
-    problemJa: "LP（ランディングページ）を作ったけれど、改善ポイントがわからない",
-    problemEn: "Built a landing page, but don't know how to optimize it for conversions",
-    solutionJa: "アクセスデータをもとにLPの課題を特定し、成果につながるページへ改修します",
-    solutionEn: "Identify landing page bottlenecks through data to boost conversion rates",
+    problemJa: "SNSを始めたいけれど、何を発信すればいいかわからない",
+    problemEn:
+      "You want to start using social media, but aren't sure what to post or where to begin.",
+    solutionJa:
+      "SNSを始める前に、サービスの見せ方やターゲット、Webサイトや問い合わせ先など、集客の土台が整っているかを確認します。そのうえで、SNSが適切な手段かどうかも含めて提案します。",
+    solutionEn:
+      "Before starting social media, I review your service positioning, target audience, website, and inquiry process. I also help determine whether social media is the right channel for your business.",
   },
   {
-    problemJa: "アクセスやコンバージョンの計測が正しくできているか不安",
-    problemEn: "Unsure if website tracking, event tags, and conversions are accurately set up",
-    solutionJa: "計測環境を正しく整備し、改善に必要なデータを正確に取得できる状態にします",
-    solutionEn: "Establish robust tracking infrastructure to capture actionable data",
+    problemJa: "何が問題なのか、どこから改善すればいいかわからない",
+    problemEn:
+      "You know something isn't working, but don't know what to improve first.",
+    solutionJa:
+      "Webサイトや広告、現在の集客方法を全体的に確認し、データやユーザーの行動をもとに優先して取り組む課題を整理します。",
+    solutionEn:
+      "I assess your website, advertising, and current marketing activities to identify the main issues and prioritize practical improvements.",
   },
   {
-    problemJa: "Google広告やMeta広告の数字をどう見ればいいかわからない",
-    problemEn: "Overwhelmed by Google & Meta Ads metrics and don't know what to focus on",
-    solutionJa: "重要な指標（KPI）を絞り込み、効果的な運用判断ができる環境を提案します",
-    solutionEn: "Filter out noise and focus on key KPIs for actionable strategy decisions",
+    problemJa: "Webサイトや広告の効果がわからず、判断に困っている",
+    problemEn:
+      "You can't clearly tell whether your website and marketing activities are working.",
+    solutionJa:
+      "必要なデータを正しく取得できる環境を整え、アクセス状況や広告の成果を把握し、次の改善につなげられるようにします。",
+    solutionEn:
+      "I set up reliable tracking and reporting so you can understand your website and advertising performance and make informed decisions.",
   },
   {
-    problemJa: "タグ設定や計測環境が複雑で、自社では対応できない",
-    problemEn: "Tag management and analytics setups are too complex to handle in-house",
-    solutionJa: "GTMやGA4などの複雑な設定・設計・実装まで一括して構築サポートします",
-    solutionEn: "Provide end-to-end support for complex setups like GTM & GA4 tags",
+    problemJa: "Webやマーケティングに詳しい人が社内にいない",
+    problemEn:
+      "You don't have an in-house person who can manage your website or online marketing.",
+    solutionJa:
+      "課題の整理から施策の検討、Web制作・設定・分析まで、必要なことを一緒に考え、実行をサポートします。",
+    solutionEn:
+      "I work as your web and marketing partner, helping you identify challenges, explore solutions, and put them into action—from website development to analytics.",
   },
 ];
 
@@ -63,28 +85,27 @@ const MainSection: React.FC<MainSectionProps> = ({ lang }) => {
 
   return (
     <Container style={{ maxWidth: 960, margin: "0 auto" }} className="py-4">
-      {/* ==========================================
-          ヘッダータイトル（共通）
-      ========================================== */}
+      {/* Section Heading */}
       <div className="text-center mb-5">
-        <h2 className="fw-bold fs-3 mb-2" style={{ color: "#1e293b" }}>
+        <h2 className="fw-bold fs-3 mb-3" style={{ color: "#1e293b" }}>
           {isJa
-            ? "Web広告やアクセス解析で、こんなお悩みはありませんか？"
-            : "Are You Facing These Marketing Challenges?"}
+            ? "Web集客やサイト運営で、こんなお悩みはありませんか？"
+            : "Need Help With Your Website or Online Marketing?"}
         </h2>
-        <p className="text-muted small" style={{ color: "#64748b" }}>
+        <p
+          className="text-muted small"
+          style={{ color: "#64748b", lineHeight: "1.8" }}
+        >
           {isJa
-            ? "データ計測と運用のプロが、現状の課題を整理し成果に繋がる環境へ改善します"
-            : "Data-driven marketing and custom tracking setup to resolve your operational bottlenecks."}
+            ? "今の状況や課題を整理し、マーケティングと技術の両面から、事業に合った改善策をご提案します。"
+            : "I help businesses identify what they need and find practical solutions by combining marketing expertise and technical knowledge."}
         </p>
       </div>
 
-      {/* ==========================================
-          PC版（対比 2カラムレイアウト）
-      ========================================== */}
+      {/* Desktop */}
       <div className="pc-block d-none d-md-block">
         <Row className="g-4 mb-4">
-          {/* 左カラム：よくあるお悩み (Before) */}
+          {/* Common Challenges */}
           <Col md={6}>
             <Card className="h-100 border-0 shadow-sm rounded-4 overflow-hidden">
               <Card.Header
@@ -92,8 +113,9 @@ const MainSection: React.FC<MainSectionProps> = ({ lang }) => {
                 style={{ backgroundColor: "#334155" }}
               >
                 <FaExclamationTriangle className="me-2 text-warning" />
-                {isJa ? "よくあるお悩み (Before)" : "Current Challenges"}
+                {isJa ? "よくあるお悩み" : "Common Challenges"}
               </Card.Header>
+
               <Card.Body className="p-4" style={{ backgroundColor: "#f8fafc" }}>
                 <ul className="list-unstyled mb-0">
                   {comparisonData.map((item, idx) => (
@@ -105,7 +127,10 @@ const MainSection: React.FC<MainSectionProps> = ({ lang }) => {
                       <span className="badge bg-danger bg-opacity-10 text-danger rounded-circle me-3 mt-1 px-2 py-1 fs-6 flex-shrink-0 fw-bold">
                         ?
                       </span>
-                      <span className="text-secondary small fw-medium" style={{ lineHeight: "1.6", color: "#475569" }}>
+                      <span
+                        className="text-secondary small fw-medium"
+                        style={{ lineHeight: "1.7", color: "#475569" }}
+                      >
                         {isJa ? item.problemJa : item.problemEn}
                       </span>
                     </li>
@@ -115,7 +140,7 @@ const MainSection: React.FC<MainSectionProps> = ({ lang }) => {
             </Card>
           </Col>
 
-          {/* 右カラム：改善後の姿 (After) */}
+          {/* Support and Solutions */}
           <Col md={6}>
             <Card className="h-100 border-0 shadow-sm rounded-4 overflow-hidden">
               <Card.Header
@@ -123,8 +148,9 @@ const MainSection: React.FC<MainSectionProps> = ({ lang }) => {
                 style={{ backgroundColor: "#0f172a" }}
               >
                 <FaCheckCircle className="me-2 text-success" />
-                {isJa ? "データでこのように改善 (After)" : "How I Can Solve It"}
+                {isJa ? "改善に向けたサポート" : "How I Can Help"}
               </Card.Header>
+
               <Card.Body className="p-4 bg-white">
                 <ul className="list-unstyled mb-0">
                   {comparisonData.map((item, idx) => (
@@ -137,7 +163,10 @@ const MainSection: React.FC<MainSectionProps> = ({ lang }) => {
                         className="text-success me-3 mt-1 flex-shrink-0"
                         style={{ fontSize: "1.1rem" }}
                       />
-                      <span className="small fw-bold" style={{ lineHeight: "1.6", color: "#1e293b" }}>
+                      <span
+                        className="small fw-medium"
+                        style={{ lineHeight: "1.7", color: "#1e293b" }}
+                      >
                         {isJa ? item.solutionJa : item.solutionEn}
                       </span>
                     </li>
@@ -149,35 +178,49 @@ const MainSection: React.FC<MainSectionProps> = ({ lang }) => {
         </Row>
       </div>
 
-      {/* ==========================================
-          スマホ版（1対1のカード対比型）
-      ========================================== */}
+      {/* Mobile */}
       <div className="mobile-block d-md-none">
         {comparisonData.map((item, idx) => (
-          <Card key={idx} className="mb-4 border-0 shadow-sm rounded-4 overflow-hidden">
-            {/* お悩み（Before） */}
+          <Card
+            key={idx}
+            className="mb-4 border-0 shadow-sm rounded-4 overflow-hidden"
+          >
+            {/* Challenge */}
             <Card.Body className="p-3 bg-light border-start border-4 border-secondary">
-              <div className="d-flex align-items-center text-muted fw-bold small mb-1">
+              <div className="d-flex align-items-center text-muted fw-bold small mb-2">
                 <FaExclamationTriangle className="me-1 text-warning" />
-                {isJa ? `課題 ${idx + 1}` : `Issue ${idx + 1}`}
+                {isJa ? `よくあるお悩み ${idx + 1}` : `Challenge ${idx + 1}`}
               </div>
-              <p className="mb-0 small fw-medium" style={{ color: "#475569" }}>
+
+              <p
+                className="mb-0 small fw-medium"
+                style={{ color: "#475569", lineHeight: "1.7" }}
+              >
                 {isJa ? item.problemJa : item.problemEn}
               </p>
             </Card.Body>
 
-            {/* 接続矢印 */}
+            {/* Arrow */}
             <div className="text-center py-1 bg-white text-muted">
-              <FaArrowDown style={{ fontSize: "0.8rem", color: "#0f172a" }} />
+              <FaArrowDown
+                style={{ fontSize: "0.8rem", color: "#0f172a" }}
+              />
             </div>
 
-            {/* 改善策（After） */}
+            {/* Solution */}
             <Card.Body className="p-3 bg-white border-start border-4 border-dark">
-              <div className="d-flex align-items-center fw-bold small mb-1" style={{ color: "#0f172a" }}>
+              <div
+                className="d-flex align-items-center fw-bold small mb-2"
+                style={{ color: "#0f172a" }}
+              >
                 <FaCheckCircle className="me-1 text-success" />
-                {isJa ? "改善アプローチ" : "Solution"}
+                {isJa ? "改善に向けたサポート" : "How I Can Help"}
               </div>
-              <p className="mb-0 small fw-bold" style={{ color: "#1e293b" }}>
+
+              <p
+                className="mb-0 small fw-medium"
+                style={{ color: "#1e293b", lineHeight: "1.7" }}
+              >
                 {isJa ? item.solutionJa : item.solutionEn}
               </p>
             </Card.Body>

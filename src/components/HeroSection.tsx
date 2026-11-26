@@ -19,17 +19,17 @@ const textVariants = {
 // 多言語テキスト定義
 const translations = {
   ja: {
-    titleMain: "デジタルマーケティング",
-    titleSub: "データ分析コンサルタント",
-    subtitleLine1: "日本市場向けのマーケティング戦略から、",
-    subtitleLine2: "広告・計測・データ分析まで一貫して対応します。",
+    titleMain: "デジタルマーケティング・Web制作",
+    titleSub: "Web集客・サイト改善のパートナー",
+    subtitleLine1: "Webサイトや広告を活用して、",
+    subtitleLine2:"事業の集客・売上アップをサポートします。",
     btnText: "お問い合わせはこちら",
   },
   en: {
-    titleMain: "Digital Marketing",
-    titleSub: "Analytics Consultant",
-    subtitleLine1: "Supporting Japan market growth through",
-    subtitleLine2: "marketing strategy, advertising, and analytics.",
+    titleMain: "Marketing × Technology",
+    titleSub: "Your Partner in Web Growth",
+    subtitleLine1: "Combining marketing expertise and technical knowledge",
+    subtitleLine2: "to improve your website and grow your business online.",
     btnText: "Get in Touch",
   },
 };
@@ -75,7 +75,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
           transition={{ delay: 0.3 }}
         >
           {t.subtitleLine1}
-          <br className="d-block d-lg-none" />
+          <br />
           {t.subtitleLine2}
         </motion.p>
 
@@ -89,7 +89,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
             border: "none",
             marginTop: "1.5rem",
           }}
-          href="#contact"
+          href="mailto:your-email@example.com"
           size="lg"
           onClick={() => {
             window.dataLayer = window.dataLayer || [];

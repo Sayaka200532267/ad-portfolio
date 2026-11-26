@@ -48,6 +48,84 @@ header nav a:hover {
   text-decoration: underline;
 }
 
+.portfolio-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  min-width: 0;
+  margin-right: 2rem;
+  white-space: normal;
+}
+
+.portfolio-brand-tagline {
+  font-size: 1rem;
+  color: #adb5bd;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+/* =========================================
+   Header: Mobile Brand Layout
+   ========================================= */
+
+@media (max-width: 767.98px) {
+  .portfolio-navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .portfolio-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: calc(100% - 55px);
+    margin: 0 !important;
+    padding: 0.25rem 0;
+    white-space: normal !important;
+  }
+
+  .portfolio-brand-name {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  .portfolio-brand-tagline {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.2rem !important;
+    font-size: 0.65rem;
+    line-height: 1.4;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .portfolio-navbar .navbar-toggler {
+    flex: 0 0 auto;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .portfolio-brand-name {
+    font-size: 1rem;
+  }
+
+  .portfolio-brand-tagline {
+    font-size: 0.8rem;
+  }
+}
+
 /* =========================================
    3. Hero Section
    ========================================= */
@@ -608,5 +686,499 @@ footer.footer p {
     text-align: center !important;
     margin-bottom: 0.8rem !important;
     line-height: 1.3 !important;
+  }
+}
+
+
+/* =========================================
+   9. Responsive Refinements
+   PCデザインを維持しながら、タブレット・スマートフォン表示を調整
+   ========================================= */
+
+/* 横スクロールによるレイアウト崩れを防止 */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+/* Capabilities / About icons */
+.capabilities-section-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.capabilities-section-container .about-icon-col {
+  min-width: 0;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.capabilities-section-container .about-icon-col p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+/* Accordion */
+.custom-accordion {
+  width: 100%;
+}
+
+.custom-accordion .accordion-button {
+  min-width: 0;
+  gap: 0.5rem;
+}
+
+.custom-accordion .accordion-button:focus {
+  box-shadow: none;
+}
+
+.custom-accordion .accordion-body {
+  overflow-wrap: anywhere;
+}
+
+.custom-accordion .accordion-body li {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Achievements */
+.achievements-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.achievements-section *,
+.achievements-section *::before,
+.achievements-section *::after {
+  box-sizing: border-box;
+}
+
+.case-card,
+.trust-card {
+  min-width: 0;
+}
+
+.card-top {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.card-category,
+.card-period {
+  overflow-wrap: anywhere;
+}
+
+.card-title,
+.card-description,
+.highlights-list li {
+  overflow-wrap: anywhere;
+}
+
+.metric-item {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.metric-value {
+  overflow-wrap: anywhere;
+}
+
+.tag-chip {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Contact card */
+#contact {
+  width: 100%;
+  min-width: 0;
+}
+
+#contact .card {
+  width: 100%;
+  min-width: 0;
+}
+
+#contact a {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .capabilities-section-container .about-icon-col {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .capabilities-section-container .about-icon-col p {
+    font-size: 0.9rem;
+  }
+
+  .achievements-section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .case-card {
+    padding: 1.4rem;
+  }
+}
+
+/* Smartphone */
+@media (max-width: 575.98px) {
+  /* 全体の余白・文字サイズ */
+  body {
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h2 {
+    font-size: 1.45rem !important;
+    line-height: 1.35;
+  }
+
+  h3 {
+    line-height: 1.4;
+  }
+
+  /* Header */
+  header {
+    padding: 0.85rem 1rem;
+  }
+
+  header .logo {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  header nav {
+    width: 100%;
+  }
+
+  header nav a {
+    font-size: 0.9rem;
+  }
+
+  /* Hero */
+  .hero-video-relative {
+    min-height: 480px;
+    height: 70svh !important;
+    max-height: 680px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.65rem, 7vw, 2rem) !important;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.5;
+  }
+
+  .btn.hero-button,
+  .btn.contact-button {
+    font-size: 0.9rem !important;
+    padding: 0.7rem 1.2rem !important;
+  }
+
+  /* About */
+  .about-section-title {
+    font-size: 1.35rem !important;
+    line-height: 1.4;
+  }
+
+  .about-section-subtitle,
+  .contact-message {
+    font-size: 0.9rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .main-list li {
+    margin-bottom: 0.85rem !important;
+  }
+
+  .mobile-block .main-list li .text {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .portfolio-link {
+    max-width: 100%;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+
+  /* Capabilities: アイコンと説明をコンパクトに */
+  .capabilities-section-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .capabilities-section-container .about-icon-col {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .capabilities-section-container .about-icon-col svg,
+  .about-icon-col svg {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .capabilities-section-container .about-icon-col p {
+    margin-top: 0.5rem !important;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* Skills accordion: 見出しと開閉アイコンを横並びに */
+  .custom-accordion .accordion-button {
+    flex-direction: row !important;
+    justify-content: flex-start;
+    align-items: center !important;
+    text-align: left !important;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .custom-accordion .accordion-button::after {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .custom-accordion .accordion-button svg {
+    flex-shrink: 0;
+    margin-right: 0.25rem;
+  }
+
+  .custom-accordion .accordion-body {
+    padding: 1.1rem 0.85rem !important;
+    font-size: 0.88rem;
+  }
+
+  .custom-accordion .accordion-body ul li {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left !important;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .custom-accordion .accordion-body ul li span:first-child {
+    flex: 0 0 28px;
+  }
+
+  .custom-accordion .accordion-body ul li span:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  /* Achievements: 実績カード */
+  .achievements-section {
+    padding: 3rem 1rem;
+  }
+
+  .achievements-header {
+    margin-bottom: 2rem;
+  }
+
+  .badge-category {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.65rem;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .section-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .trust-badges-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+  }
+
+  .trust-card {
+    padding: 0.9rem 0.5rem;
+    border-radius: 12px;
+  }
+
+  .trust-value,
+  .trust-valueHighlight {
+    font-size: 1.45rem !important;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .trust-value small,
+  .trust-valueHighlight small {
+    font-size: 0.75rem;
+  }
+
+  .trust-label {
+    font-size: 0.68rem;
+    line-height: 1.4;
+  }
+
+  .cards-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .case-card {
+    padding: 1.2rem;
+    border-radius: 16px;
+  }
+
+  .card-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .card-category,
+  .card-period {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+  }
+
+  .metrics-box {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem 0.35rem;
+    padding: 0.7rem 0.45rem;
+    margin-bottom: 1rem;
+  }
+
+  .metric-label {
+    font-size: 0.63rem;
+    line-height: 1.4;
+  }
+
+  .metric-value {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .card-description {
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+
+  .highlights-list {
+    margin-bottom: 1rem;
+  }
+
+  .highlights-list li {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    padding-left: 1.1rem;
+  }
+
+  .tag-chip {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.45rem;
+  }
+
+  /* Contact */
+  #contact .card-body {
+    padding: 1.5rem 1.1rem !important;
+  }
+
+  #contact h3 {
+    font-size: 1.35rem !important;
+  }
+
+  #contact p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  #contact a {
+    padding: 0.85rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Footer */
+  footer.footer {
+    padding: 1.5rem 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  footer.footer a {
+    display: inline-block;
+    margin: 0.2rem 0.35rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .capabilities-section-container .about-icon-col {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .capabilities-section-container .about-icon-col svg,
+  .about-icon-col svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .capabilities-section-container .about-icon-col p {
+    font-size: 0.75rem;
+  }
+
+  .trust-badges-grid {
+    gap: 0.5rem;
+  }
+
+  .trust-card {
+    padding: 0.75rem 0.35rem;
+  }
+
+  .trust-value,
+  .trust-valueHighlight {
+    font-size: 1.25rem !important;
+  }
+
+  .case-card {
+    padding: 1rem;
   }
 }

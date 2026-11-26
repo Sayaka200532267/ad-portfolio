@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import { Container, Accordion, Button, Form, Card, Row, Col } from "react-bootstrap";
+
+// src/components/SkillsAccordion.tsx
+
+import React from "react";
+import { Container, Accordion, Card } from "react-bootstrap";
 import "../App.css";
 
 import {
@@ -11,6 +14,10 @@ import {
   FaDatabase,
   FaGlobeAmericas,
   FaPaperPlane,
+  FaLaptopCode,
+  FaChartLine,
+  FaBullhorn,
+  FaCode,
 } from "react-icons/fa";
 
 import {
@@ -26,12 +33,6 @@ import {
 
 import { AiOutlineLineChart } from "react-icons/ai";
 
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
-
 type Language = "ja" | "en";
 
 interface SkillsAccordionProps {
@@ -40,63 +41,122 @@ interface SkillsAccordionProps {
 
 const translations = {
   ja: {
-    title: "使用ツール・技術・言語",
+    title: "スキル・使用ツール",
+    subtitle:
+      "マーケティングからWeb制作、データ分析、技術的な実装まで、課題に応じて幅広く対応しています。",
     categories: {
-      ads: "広告プラットフォーム",
-      analytics: "計測・分析ツール",
-      webCms: "Web制作・CMSプラットフォーム",
-      design: "デザインツール",
-      db: "データベース言語",
-      languages: "対応言語",
+      web: "Web開発・技術",
+      marketing: "Webマーケティング・広告",
+      analytics: "アクセス解析・計測",
+      data: "データ分析・データベース",
+      design: "デザイン・クリエイティブ",
+      languages: "言語・海外対応",
     },
     items: {
-      googleAds: "Google広告",
-      metaAds: "Meta広告（Facebook / Instagram）",
-      gtm: "Google Tag Manager（GTM）",
-      ga4: "Google Analytics 4（GA4）",
-      english: "英語 (ビジネス対応可 / ローカライズ対応)",
+      web: [
+        "HTML5 / CSS3",
+        "JavaScript / React",
+        "PHP",
+        "WordPress",
+        "Shopify",
+        "Drupal",
+      ],
+      marketing: [
+        "Google広告",
+        "Meta広告（Facebook / Instagram）",
+        "Web集客施策・広告運用",
+        "Webサイト・LP改善",
+        "ターゲット・顧客導線の検討",
+      ],
+      analytics: [
+        "Google Analytics 4（GA4）",
+        "Google Tag Manager（GTM）",
+        "Looker Studio",
+        "Microsoft Clarity",
+        "コンバージョン計測・イベント設定",
+      ],
+      data: [
+        "SQL（BigQuery）",
+        "広告・Webサイトデータの分析",
+        "データ集計・レポート作成",
+      ],
+      design: [
+        "Figma",
+        "Canva",
+        "Adobe Illustrator",
+        "Webサイト・LPのデザイン調整",
+        "広告クリエイティブの改善",
+      ],
+      languages: [
+        "日本語",
+        "英語（ビジネスコミュニケーション・ローカライズ対応）",
+      ],
     },
     contact: {
       title: "お問い合わせ",
-      subtitle: "ご質問や案件のご相談など、お気軽にご連絡ください。",
-      nameLabel: "お名前",
-      namePlaceholder: "山田 太郎",
-      emailLabel: "メールアドレス",
-      emailPlaceholder: "your.email@example.com",
-      messageLabel: "お問い合わせ内容",
-      messagePlaceholder: "ご相談内容を入力してください",
-      submitBtn: "送信する",
-      successMsg: "お問い合わせありがとうございます。メッセージを送信いたしました。",
+      subtitle:
+        "Web集客やサイト改善について、何から始めればいいかわからない段階でもお気軽にご相談ください。",
+      button: "メールで相談する",
     },
   },
+
   en: {
-    title: "Tools, Technologies & Languages",
+    title: "Skills & Technologies",
+    subtitle:
+      "Combining digital marketing, web development, analytics, and technical implementation to solve business challenges.",
     categories: {
-      ads: "Ad Platforms",
-      analytics: "Analytics & Measurement",
-      webCms: "Web Development & CMS",
-      design: "Design Tools",
-      db: "Database Languages",
-      languages: "Languages Spoken",
+      web: "Web Development & Technology",
+      marketing: "Digital Marketing & Advertising",
+      analytics: "Web Analytics & Tracking",
+      data: "Data Analysis & Databases",
+      design: "Design & Creative Tools",
+      languages: "Languages & Global Support",
     },
     items: {
-      googleAds: "Google Ads",
-      metaAds: "Meta Ads (Facebook / Instagram)",
-      gtm: "Google Tag Manager (GTM)",
-      ga4: "Google Analytics 4 (GA4)",
-      english: "English (Business Level / Localization)",
+      web: [
+        "HTML5 / CSS3",
+        "JavaScript / React",
+        "PHP",
+        "WordPress",
+        "Shopify",
+        "Drupal",
+      ],
+      marketing: [
+        "Google Ads",
+        "Meta Ads (Facebook / Instagram)",
+        "Online Marketing & Ad Operations",
+        "Website & Landing Page Optimization",
+        "Targeting & Customer Journey Planning",
+      ],
+      analytics: [
+        "Google Analytics 4 (GA4)",
+        "Google Tag Manager (GTM)",
+        "Looker Studio",
+        "Microsoft Clarity",
+        "Conversion Tracking & Event Setup",
+      ],
+      data: [
+        "SQL (BigQuery)",
+        "Advertising & Website Data Analysis",
+        "Data Reporting & Visualization",
+      ],
+      design: [
+        "Figma",
+        "Canva",
+        "Adobe Illustrator",
+        "Website & Landing Page Design Adjustments",
+        "Ad Creative Optimization",
+      ],
+      languages: [
+        "Japanese",
+        "English (Business Communication & Localization)",
+      ],
     },
     contact: {
-      title: "Contact Me",
-      subtitle: "Feel free to reach out for any inquiries or project proposals.",
-      nameLabel: "Name",
-      namePlaceholder: "Your Name",
-      emailLabel: "Email Address",
-      emailPlaceholder: "your.email@example.com",
-      messageLabel: "Message",
-      messagePlaceholder: "How can I help you?",
-      submitBtn: "Send Message",
-      successMsg: "Thank you for your message! I will get back to you soon.",
+      title: "Get in Touch",
+      subtitle:
+        "Have questions about improving your website or online marketing? Feel free to reach out, even if you're not sure where to start.",
+      button: "Contact Me by Email",
     },
   },
 };
@@ -104,113 +164,131 @@ const translations = {
 const SkillsAccordion: React.FC<SkillsAccordionProps> = ({ lang }) => {
   const t = translations[lang];
 
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleFormChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "contact_form_submit",
-      lang: lang,
-      formData: formData,
-    });
-
-    setSubmitted(true);
-  };
-
-  const accordionItems = [
+  const skillGroups = [
     {
       key: "0",
-      title: t.categories.ads,
-      content: (
-        <ul className="list-unstyled mb-0 d-flex flex-column gap-2 align-items-center">
-          <li><FaGoogle className="me-2 text-primary" />{t.items.googleAds}</li>
-          <li>
-            <FaFacebookF className="me-1 text-primary" />
-            <FaInstagram className="me-2 text-danger" />
-            {t.items.metaAds}
-          </li>
-        </ul>
-      ),
+      title: t.categories.web,
+      icon: <FaLaptopCode className="me-2 text-primary" />,
+      items: t.items.web,
+      icons: [
+        <SiHtml5 className="me-2 text-danger" />,
+        <SiCss3 className="me-2 text-primary" />,
+        <SiJavascript className="me-2 text-warning" />,
+        <FaReact className="me-2 text-info" />,
+        <FaCode className="me-2 text-secondary" />,
+        <SiWordpress className="me-2 text-primary" />,
+      ],
     },
     {
       key: "1",
-      title: t.categories.analytics,
-      content: (
-        <ul className="list-unstyled mb-0 d-flex flex-column gap-2 align-items-center">
-          <li><FaTags className="me-2 text-info" />{t.items.gtm}</li>
-          <li><AiOutlineLineChart className="me-2 text-warning" />{t.items.ga4}</li>
-          <li><AiOutlineLineChart className="me-2 text-warning" />BigQuery</li>
-          <li><AiOutlineLineChart className="me-2 text-warning" />Looker Studio</li>
-        </ul>
-      ),
+      title: t.categories.marketing,
+      icon: <FaBullhorn className="me-2 text-danger" />,
+      items: t.items.marketing,
+      icons: [
+        <FaGoogle className="me-2 text-primary" />,
+        <FaFacebookF className="me-2 text-primary" />,
+        <FaInstagram className="me-2 text-danger" />,
+        <FaBullhorn className="me-2 text-secondary" />,
+        <FaLaptopCode className="me-2 text-info" />,
+      ],
     },
     {
       key: "2",
-      title: t.categories.webCms,
-      content: (
-        <ul className="list-unstyled mb-0 d-flex flex-column gap-2 align-items-center">
-          <li><SiHtml5 className="me-2 text-danger" />HTML5 / <SiCss3 className="mx-2 text-primary" />CSS3</li>
-          <li><SiJavascript className="me-2 text-warning" />JavaScript / <FaReact className="mx-2 text-info" />React</li>
-          <li><SiShopify className="me-2 text-success" />Shopify / <SiWordpress className="mx-2 text-primary" />WordPress</li>
-        </ul>
-      ),
+      title: t.categories.analytics,
+      icon: <FaChartLine className="me-2 text-success" />,
+      items: t.items.analytics,
+      icons: [
+        <AiOutlineLineChart className="me-2 text-warning" />,
+        <FaTags className="me-2 text-info" />,
+        <FaChartLine className="me-2 text-success" />,
+        <AiOutlineLineChart className="me-2 text-warning" />,
+        <FaTags className="me-2 text-info" />,
+      ],
     },
     {
       key: "3",
-      title: t.categories.design,
-      content: (
-        <ul className="list-unstyled mb-0 d-flex flex-column gap-2 align-items-center">
-          <li><SiCanva className="me-2 text-info" />Canva</li>
-          <li><SiFigma className="me-2 text-danger" />Figma</li>
-          <li><SiAdobeillustrator className="me-2 text-warning" />Illustrator</li>
-        </ul>
-      ),
+      title: t.categories.data,
+      icon: <FaDatabase className="me-2 text-secondary" />,
+      items: t.items.data,
+      icons: [
+        <FaDatabase className="me-2 text-secondary" />,
+        <AiOutlineLineChart className="me-2 text-warning" />,
+        <FaChartLine className="me-2 text-success" />,
+      ],
     },
     {
       key: "4",
-      title: t.categories.db,
-      content: (
-        <ul className="list-unstyled mb-0 d-flex flex-column gap-2 align-items-center">
-          <li><FaDatabase className="me-2 text-secondary" />SQL (BigQuery)</li>
-        </ul>
-      ),
+      title: t.categories.design,
+      icon: <SiFigma className="me-2 text-danger" />,
+      items: t.items.design,
+      icons: [
+        <SiFigma className="me-2 text-danger" />,
+        <SiCanva className="me-2 text-info" />,
+        <SiAdobeillustrator className="me-2 text-warning" />,
+        <FaLaptopCode className="me-2 text-info" />,
+        <FaInstagram className="me-2 text-danger" />,
+      ],
     },
     {
       key: "5",
       title: t.categories.languages,
-      content: (
-        <ul className="list-unstyled mb-0 d-flex flex-column gap-2 align-items-center">
-          <li><FaGlobeAmericas className="me-2 text-success" />{t.items.english}</li>
-        </ul>
-      ),
+      icon: <FaGlobeAmericas className="me-2 text-success" />,
+      items: t.items.languages,
+      icons: [
+        <FaGlobeAmericas className="me-2 text-success" />,
+        <FaGlobeAmericas className="me-2 text-info" />,
+      ],
     },
   ];
 
   return (
     <Container id="skills" className="py-5">
-      {/* --- スキルセクション --- */}
+      {/* スキルセクション */}
       <div className="mb-5">
-        <h2 className="text-center mb-4 fw-bold" style={{ fontSize: "1.8rem" }}>
+        <h2
+          className="text-center mb-3 fw-bold"
+          style={{ fontSize: "1.8rem" }}
+        >
           {t.title}
         </h2>
-        <Accordion alwaysOpen className="custom-accordion mx-auto" style={{ maxWidth: "800px" }}>
-          {accordionItems.map((item) => (
-            <Accordion.Item key={item.key} eventKey={item.key} className="border-0 mb-2 rounded shadow-sm overflow-hidden">
+
+        <p
+          className="text-center text-muted mb-4"
+          style={{ lineHeight: "1.8" }}
+        >
+          {t.subtitle}
+        </p>
+
+        <Accordion
+          alwaysOpen
+          className="custom-accordion mx-auto"
+          style={{ maxWidth: "800px" }}
+        >
+          {skillGroups.map((group) => (
+            <Accordion.Item
+              key={group.key}
+              eventKey={group.key}
+              className="border-0 mb-2 rounded shadow-sm overflow-hidden"
+            >
               <Accordion.Header className="custom-accordion-header">
-                {item.title}
+                {group.icon}
+                {group.title}
               </Accordion.Header>
+
               <Accordion.Body className="text-center py-4 bg-light">
-                {item.content}
+                <ul className="list-unstyled mb-0 d-flex flex-column gap-3 align-items-center">
+                  {group.items.map((item, index) => (
+                    <li
+                      key={index}
+                      className="d-flex align-items-center justify-content-center"
+                    >
+                      <span style={{ minWidth: "28px", textAlign: "center" }}>
+                        {group.icons[index]}
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </Accordion.Body>
             </Accordion.Item>
           ))}
@@ -219,82 +297,36 @@ const SkillsAccordion: React.FC<SkillsAccordionProps> = ({ lang }) => {
 
       <hr className="my-5 opacity-25" />
 
-      {/* --- 問い合わせセクション --- */}
+      {/* お問い合わせセクション */}
       <div id="contact" className="pt-3">
-        <Card className="border-0 shadow-lg mx-auto rounded-4 overflow-hidden" style={{ maxWidth: "680px" }}>
-          <Card.Body className="p-4 p-md-5">
-            <div className="text-center mb-4">
-              <h3 className="fw-bold mb-2" style={{ fontSize: "1.6rem" }}>
-                {t.contact.title}
-              </h3>
-              <p className="text-muted small">{t.contact.subtitle}</p>
-            </div>
+        <Card
+          className="border-0 shadow-lg mx-auto rounded-4 overflow-hidden"
+          style={{ maxWidth: "680px" }}
+        >
+          <Card.Body className="p-4 p-md-5 text-center">
+            <h3
+              className="fw-bold mb-2"
+              style={{ fontSize: "1.6rem" }}
+            >
+              {t.contact.title}
+            </h3>
 
-            {submitted ? (
-              <div className="alert alert-success text-center p-4 rounded-3" role="alert">
-                {t.contact.successMsg}
-              </div>
-            ) : (
-              <Form onSubmit={handleFormSubmit}>
-                <Row>
-                  <Col md={6}>
-                    <Form.Group className="mb-3" controlId="formName">
-                      <Form.Label className="fw-medium small">{t.contact.nameLabel}</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="name"
-                        required
-                        placeholder={t.contact.namePlaceholder}
-                        value={formData.name}
-                        onChange={handleFormChange}
-                        className="bg-light border-0 py-2"
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group className="mb-3" controlId="formEmail">
-                      <Form.Label className="fw-medium small">{t.contact.emailLabel}</Form.Label>
-                      <Form.Control
-                        type="email"
-                        name="email"
-                        required
-                        placeholder={t.contact.emailPlaceholder}
-                        value={formData.email}
-                        onChange={handleFormChange}
-                        className="bg-light border-0 py-2"
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
+            <p className="text-muted small mb-4">
+              {t.contact.subtitle}
+            </p>
 
-                <Form.Group className="mb-4" controlId="formMessage">
-                  <Form.Label className="fw-medium small">{t.contact.messageLabel}</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    name="message"
-                    rows={4}
-                    required
-                    placeholder={t.contact.messagePlaceholder}
-                    value={formData.message}
-                    onChange={handleFormChange}
-                    className="bg-light border-0 py-2"
-                  />
-                </Form.Group>
-
-                <Button
-                  type="submit"
-                  className="w-100 py-3 rounded-pill fw-bold d-flex align-items-center justify-content-center gap-2 border-0"
-                  style={{
-                    backgroundColor: "#458ddb",
-                    fontSize: "1rem",
-                    transition: "all 0.2s ease-in-out"
-                  }}
-                >
-                  <FaPaperPlane />
-                  {t.contact.submitBtn}
-                </Button>
-              </Form>
-            )}
+            <a
+              href="mailto:Sayaka.ohara.work@gmail.com"
+              className="btn w-100 py-3 rounded-pill fw-bold d-flex align-items-center justify-content-center gap-2 border-0 text-white"
+              style={{
+                backgroundColor: "#458ddb",
+                fontSize: "1rem",
+                textDecoration: "none",
+              }}
+            >
+              <FaPaperPlane />
+              {t.contact.button}
+            </a>
           </Card.Body>
         </Card>
       </div>
